@@ -19,8 +19,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - mysql
-    volumes:
-      - ./:/var/www/html
+    #volumes:
+     # - ./:/var/www/html
     ports:
       - "8080:80"
     
