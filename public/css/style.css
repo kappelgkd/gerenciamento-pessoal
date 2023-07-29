@@ -1,0 +1,35 @@
+.bgLogin{
+    /* background-color: rgba(146, 210, 210, 100); */
+    background-color: rgb(211,211,211);
+    height: 100%;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxFormulário{
+    width: 500px; 
+    height:346px; 
+    border-radius: 15px;
+    /* border:1px solid #699; */
+   
+}
+
+.alinhaCentro{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fundoGeral{
+    background-color:red;
+}
+
+.boxFormulário{
+    width: 500px; 
+    height:346px; 
+    border-radius: 15px;
+    /* border:1px solid #699; */
+   
+}

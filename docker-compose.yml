@@ -1,0 +1,26 @@
+#version: "3.9"
+services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    volumes:
+      - /db/data:/var/lib/mysql/
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+  php:
+    container_name: php
+    #image: php:7.2-apache
+    #command: RUN docker-php-ext-install mysqli pdo pdo_mysql
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8080:80"
+    
