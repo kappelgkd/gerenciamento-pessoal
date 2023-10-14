@@ -1,35 +1,60 @@
-.bgLogin{
+.bgLogin {
     /* background-color: rgba(146, 210, 210, 100); */
-    background-color: rgb(211,211,211);
+    background-color: rgb(211, 211, 211);
     height: 100%;
     width: 100%;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.boxFormulário{
-    width: 500px; 
-    height:346px; 
+.boxFormulário {
+    width: 500px;
+    height: 346px;
     border-radius: 15px;
     /* border:1px solid #699; */
-   
+
 }
 
-.alinhaCentro{
-    display:flex;
+.alinhaCentro {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.fundoGeral{
-    background-color:red;
+.fundoGeral {
+    background-color: red;
 }
 
-.boxFormulário{
-    width: 500px; 
-    height:346px; 
+.boxFormulário {
+    width: 500px;
+    height: 346px;
     border-radius: 15px;
     /* border:1px solid #699; */
-   
+
+}
+
+
+body {
+    background-color: #7e57c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-purple {
+    background-color: #7e57c2;
+    color: #fff;
+}
+
+.btn-purple:hover {
+    background-color: #684db4;
 }

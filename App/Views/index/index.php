@@ -1,33 +1,30 @@
-<div class="bgLogin row">
-    <div class="card boxFormulário col-12 col-md-5">
-        <img src="img/letrag.png" class="card-img-top alinhaCentro" alt="..." style="width:76px; margin-left:42%; margin-top:10px;">
-        <div class="card-body col-md">
-            <form method="POST" action="/autenticar">
-                <div class="alinhaCentro form-group">
-                    <h5 class="card-title">Login</h5>
-                </div>
-                <div class="alinhaCentro form-group">
-                    <input type="text" size="30px" placeholder="Usuário" name="login"></input>
-                </div>
-                
-                <div class="alinhaCentro form-group">
-                    <input type="password" size="30px" placeholder="Senha" name="senha"></input><br/><br/>
-                </div>
-                
-                <div class="alinhaCentro form-group">
-                    <input type="submit" class="btn btn-primary"></input>
-                </div>
-                
-                <?php
-                // recuperando valor do atributo login no view. É onde define o valor em caso de erro.
-                if($this->view->login == 'erro')
-                {
-                    ?>
-                    <!-- TRATAR POSICIONAMENTO DA MENSAGEM DE ERRO -->
-                    <span class="text text-danger">Login ou senha invalidos</span>
-                <?php
-                }?>
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 login-form">
+                <h2 class="text-center">Login</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Usuário:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Informe seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Informe sua senha">
+                    </div>
+                    <button type="submit" class="btn btn-purple btn-block">Entrar</button>
+                </form>
+                <p class="text-center mt-3"><a href="#">Primeiro Acesso?</a></p>
+            </div>
         </div>
     </div>
-</div>
+</body>
+</html>
