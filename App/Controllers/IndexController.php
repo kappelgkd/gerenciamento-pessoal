@@ -37,6 +37,8 @@ class IndexController extends Action {
 		$usuario = Container::getModel('Usuario');
 
 		// TRATANDO OS DADOS PARA ENTÃO PASSAR PARA O MODEL.
+		// print_r($_POST);
+		// exit;
 		$usuario->__set('login', $_POST['login']);
 		$usuario->__set('nome', $_POST['nome']);
 		$usuario->__set('email', $_POST['email']);

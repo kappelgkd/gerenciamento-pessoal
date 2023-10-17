@@ -43,6 +43,17 @@ class AppController extends Action{
 
     }
 
+    public function cadastrarTexto(){
+        
+        $texto = Container::getModel('Blog');
+        $texto->__set('titulo', $_POST['titulo']);
+        $texto->__set('texto', $_POST['texto']);
+        
+        //$texto->cadastrarTexto();
+        echo json_encode(($texto->cadastrarTexto()), true);
+        // exit;
+    }
+
 }
 
 ?>

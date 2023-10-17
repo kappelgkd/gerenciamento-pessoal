@@ -10,11 +10,11 @@ class Connection {
 		try {
 
 			$conn = new \PDO(
-				"mysql:host=mysql;dbname=gerenciamento_pessoal",
+				"mysql:host=192.168.0.9;dbname=gerenciamento_pessoal",
 				"root",
 				"1234" 
 			);
-
+			
 			return $conn;
 
 		} catch (\PDOException $e) {

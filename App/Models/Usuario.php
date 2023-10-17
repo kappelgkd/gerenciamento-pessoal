@@ -51,14 +51,14 @@ class Usuario extends Model{
         try {
 
             $stmt->execute();
-            // $retornoConsulta['status'] = '200';
-            // $retornoConsulta['msg'] = 'Cadastro realizado com sucesso';
+            $retornoConsulta['status'] = '200';
+            $retornoConsulta['msg'] = 'Cadastro realizado com sucesso';
 
         }
         catch (Exception $e){
 
-            // $retornoConsulta['status'] = '400';
-            // $retornoConsulta['msg'] = 'O cadastro não pode ser realizado. Por favor, tente mais tarde';
+            $retornoConsulta['status'] = '400';
+            $retornoConsulta['msg'] = 'O cadastro não pode ser realizado. Por favor, tente mais tarde';
 
         }
         
@@ -70,7 +70,7 @@ class Usuario extends Model{
     public function autenticar(){
 
         $query = "SELECT id, login, nome, email, senha FROM tb_usuario WHERE login = :login AND senha = :senha";
-
+        
         $stmt = $this->db->prepare($query);
 
         $stmt->bindValue('login', $this->__get('login'), \PDO::PARAM_STR);

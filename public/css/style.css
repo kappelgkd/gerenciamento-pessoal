@@ -1,3 +1,47 @@
+
+        /* Defina a paleta de cores roxas personalizada */
+        body {
+            background-color: #7b68ee;
+            /* color: #fff; */
+        }
+        .menu {
+            background-color: #7b68ee;
+            padding: 10px 0;
+        }
+        .menu ul {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+        }
+        .menu ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: grey;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .card {
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+        }
+    
+
+
+
 .bgLogin {
     /* background-color: rgba(146, 210, 210, 100); */
     background-color: rgb(211, 211, 211);
@@ -36,8 +80,8 @@
 
 
 body {
-    background-color: #7e57c2;
-    display: flex;
+    /* background-color: #7e57c2; */
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: 100vh;

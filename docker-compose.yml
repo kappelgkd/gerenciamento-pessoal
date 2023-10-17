@@ -3,7 +3,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "3306:3306"
+      - "3380:3306"
     volumes:
       - /db/data:/var/lib/mysql/
     command: --default-authentication-plugin=mysql_native_password
