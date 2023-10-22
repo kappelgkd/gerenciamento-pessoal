@@ -54,6 +54,18 @@ class AppController extends Action{
         // exit;
     }
 
+    public function listarTexto(){
+        session_start();
+        // print_r($_SESSION);
+        $textoCadastrados = Container::getModel('Blog');
+        $textoCadastrados->__set('id', $_SESSION['id']);
+        
+        $textoCadastrados->listarTexto();
+        
+        echo $textoCadastrados->listarTexto();
+    
+    }
+
 }
 
 ?>

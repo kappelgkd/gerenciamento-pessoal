@@ -3,6 +3,7 @@
 namespace App\Models;
 use MF\Model\Model;
 use Exception;
+use PDO;
 
 class Blog extends Model{
 
@@ -59,6 +60,43 @@ class Blog extends Model{
         //return $this; // vou retornar o objeto gerado na consulta SQL.
         return $retornoConsulta;
      
+    }
+
+    public function listarTexto(){
+        
+        $query = "SELECT DISTINCT conteudo.texto, conteudo.titulo FROM tb_textos_blog as conteudo INNER JOIN tb_usuario as user ON conteudo.usuario = user.id";
+        $stmt = $this->db->prepare($query);;
+        $stmt->bindValue(':conteudo.usuario',$this->__get('id'), \PDO::PARAM_STR);
+       
+        try {
+            
+            $stmt->execute();
+            
+            // $conteudo = $stmt->fetch(\PDO::FETCH_ASSOC);
+            // echo "<pre>";
+            // var_dump($conteudo);
+            $conteudo = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $retornoConsulta['status'] = '204';
+            $retornoConsulta['msg'] = "Não há conteudo cadastrado";
+
+            if(count($conteudo) > 0){
+
+                $retornoConsulta['status'] = '200';
+                $retornoConsulta['msg'] = $conteudo;
+
+            }
+            
+        }
+        catch (Exception $e){
+
+            $retornoConsulta['status'] = '400';
+            $retornoConsulta['msg'] = 'O cadastro não pode ser realizado. Por favor, tente mais tarde';
+
+        }
+
+        return json_encode($retornoConsulta);
+
     }
 
     

@@ -59,6 +59,12 @@ class Route extends Bootstrap {
 			'action' => 'cadastrarTexto'
 		);
 
+		$routes['listarTextos'] = array(
+			'route' => '/listar-texto',
+			'controller' => 'AppController',
+			'action' => 'listarTexto'
+		);
+
 		$this->setRoutes($routes);
 	}
 
