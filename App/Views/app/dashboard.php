@@ -9,9 +9,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Página 1</h5>
-                    <p class="card-text">Descrição da Página 1.</p>
-                    <a href="pagina1.html" class="card-link">Ir para Página 1</a>
+                    <h5 class="card-title">Textos</h5>
+                    <p class="card-text">Biblioteca de textos.</p>
+                    <a href="/dashboard-texto" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
         </div>
@@ -19,9 +19,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Página 1</h5>
-                    <p class="card-text">Descrição da Página 1.</p>
-                    <a href="pagina1.html" class="card-link">Ir para Página 1</a>
+                    <h5 class="card-title">Midias</h5>
+                    <p class="card-text">Biblioteca de midias.</p>
+                    <a href="pagina1.html" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
         </div>
@@ -29,9 +29,9 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Página 1</h5>
-                    <p class="card-text">Descrição da Página 1.</p>
-                    <a href="pagina1.html" class="card-link">Ir para Página 1</a>
+                    <h5 class="card-title">Diversos</h5>
+                    <p class="card-text">Conteudo Diverso</p>
+                    <a href="pagina1.html" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
         </div>

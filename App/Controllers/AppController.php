@@ -66,6 +66,11 @@ class AppController extends Action{
     
     }
 
+    public function dashboardTexto(){
+        $this->render('dashboard-cadastro');
+    
+    }
+
 }
 
 ?>
