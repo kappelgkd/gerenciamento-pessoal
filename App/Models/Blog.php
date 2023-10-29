@@ -64,7 +64,7 @@ class Blog extends Model{
 
     public function listarTexto(){
         
-        $query = "SELECT DISTINCT conteudo.texto, conteudo.titulo FROM tb_textos_blog as conteudo INNER JOIN tb_usuario as user ON conteudo.usuario = user.id";
+        $query = "SELECT conteudo.texto, conteudo.titulo FROM tb_textos_blog as conteudo INNER JOIN tb_usuario as user ON conteudo.usuario = user.id";
         $stmt = $this->db->prepare($query);;
         $stmt->bindValue(':conteudo.usuario',$this->__get('id'), \PDO::PARAM_STR);
        
