@@ -71,6 +71,19 @@ class Route extends Bootstrap {
 			'action' => 'dashboardTexto'
 		);
 
+
+		$routes['biblioteca'] = array(
+			'route' => '/biblioteca',
+			'controller' => 'BibliotecaController',
+			'action' => 'biblioteca'
+		);
+
+		$routes['listaArquivos'] = array(
+			'route' => '/lista-arquivos',
+			'controller' => 'BibliotecaController',
+			'action' => 'listaArquivos'
+		);
+
 		$this->setRoutes($routes);
 	}
 

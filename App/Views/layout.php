@@ -18,7 +18,8 @@
 	</head>
 
 	<body class="fundo">
-		<?php $this->content() ?> 
+		<?php 
+		$this->content() ?> 
 	</body>
 
 </html>
