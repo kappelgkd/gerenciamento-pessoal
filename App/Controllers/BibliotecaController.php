@@ -25,10 +25,10 @@ class BibliotecaController extends Action{
         $arquivos = Container::getModel("Arquivos");
 
         $retornoArquivo = $arquivos->listarArquivos();
-        echo $retornoArquivo;
-        exit;
+        
        if($retornoArquivo['status'] == 200){
-            echo $retornoArquivo['msg'];
+            // $retornoArquivo=$retornoArquivo['msg'];
+            echo json_encode($retornoArquivo);
        }
         
     }

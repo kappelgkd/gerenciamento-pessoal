@@ -52,7 +52,7 @@ class Arquivos extends Model{
 
         }
         
-        return json_encode($retornoConsulta,true);
+        return $retornoConsulta;
        
     }
 

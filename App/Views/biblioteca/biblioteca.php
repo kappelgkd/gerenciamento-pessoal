@@ -25,14 +25,19 @@
 
 <div class="container mt-5">
     <h2>Listagem de Arquivos</h2>
-    <table id="tabela" class="display" style="width:100%">
-        <thead>
+    <table id="tabela" class="table table-bordered table-striped display" style="width:100%">
+        <thead class="thead-dark">
             <tr>
                 <th>ID</th>
                 <th>Arquivo</th>
-                <th>Criado em</th>
+                <th>Criado Em</th>
+                <th>Ações</th>
             </tr>
         </thead>
+        <tbody id="tbody">
+            
+        </tbody>
+
     </table>
 </div>
 
@@ -43,6 +48,13 @@
 <script>
     $(document).ready(function() {
 
+        /*
+            NÃO ESTOU CONSEGUINDO MONTAR O DATATABLE. 
+            AO CHAMAR A CLASSE .DataTable() POR ALGUMA RAZÃO 
+            APARECE SEMPRE O AVISO QUE NÃO HÁ DADOS MESMO COM A TABELA JÁ PREENCHIDA PELA FUNÇÃO 
+            ABAIXO.
+        */
+
         // Quando o botão for clicado
         // Realiza a solicitação AJAX
         $.ajax({
@@ -50,22 +62,15 @@
             url: "/lista-arquivos",
 
             success: function(data) {
-                
-                console.log(data);
-                $('#tabela').DataTable({
-                    "columns": [{
-                            "data": data.id
-                        },
-                        {
-                            "data": "arquivo"
-                        },
-                        {
-                            "data": "criado em"
-                        }
-                    ]
+                var aDemoItems = JSON.parse(data);
+                var tbody = $("#tbody");
+                var linha = ""
+                aDemoItems.msg.forEach(function(item) {
+
+                    linha = "<tr><td id='idItem'>"+item.id+"</td><td>"+item.arquivo+"</td><td>"+item.criado_em+"</td><td><button class='btn btn-primary'>Deletar</button></td></tr>"
+                    tbody.append(linha);
                 });
-
-
+                
             },
             error: function() {
                 // em caso de erro
