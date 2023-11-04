@@ -12,6 +12,6 @@ services:
     volumes:
       - ./:/var/www/html
     ports:
-      - "8080:80"
+      - "2000:80"
     restart: always
     
