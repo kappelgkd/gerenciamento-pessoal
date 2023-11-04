@@ -53,7 +53,7 @@
         /* background-color: #6c63ff; */
         border: none;
         box-shadow: 0px 10px 20px;
-        margin-top: 90px;
+        margin-top: 20px;
         /* Adiciona sombra ao card */
     }
 
