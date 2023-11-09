@@ -10,7 +10,7 @@ class Connection {
 		try {
 
 			$conn = new \PDO(
-				"mysql:host=192.168.0.3;dbname=gerenciamento_pessoal",
+				"mysql:host=192.168.0.7;dbname=gerenciamento_pessoal",
 				"root",
 				"1234" 
 			);
