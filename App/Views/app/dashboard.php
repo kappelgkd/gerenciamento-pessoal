@@ -4,9 +4,8 @@
     </center>
 </div>
 <div class="container boxMenu">
-
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Textos</h5>
@@ -16,17 +15,18 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Midias</h5>
-                    <p class="card-text">Biblioteca de midias.</p>
-                    <a href="pagina1.html" class="btn btn-primary">Acessar</a>
+                    <p class="card-text">Biblioteca de livros e midias.</p>
+                    <a href="/biblioteca" class="btn btn-primary">Livros</a>
+                    <a href="/midias" class="btn btn-primary">Midias</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Diversos</h5>
@@ -35,6 +35,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tarefas</h5>
+                    <p class="card-text">Tarefas Cadastradas</p>
+                    <a href="/tarefas" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>
@@ -42,11 +53,11 @@
 <style>
     .boxMenu {
         height: 56%;
-        background-color: #fff;
+        /* background-color: #fff; */
         border-radius: 8px;
         margin-top: 4%;
         padding: 20px;
-        box-shadow: 10px 15px 25px;
+        /* box-shadow: 10px 15px 25px; */
     }
 
     .card {

@@ -84,6 +84,18 @@ class Route extends Bootstrap {
 			'action' => 'listaArquivos'
 		);
 
+		$routes['tarefa'] = array(
+			'route' => '/tarefas',
+			'controller' => 'TarefasController',
+			'action' => 'tarefas'
+		);
+
+		$routes['midias'] = array(
+			'route' => '/midias',
+			'controller' => 'MidiasController',
+			'action' => 'midias'
+		);
+
 		$this->setRoutes($routes);
 	}
 
