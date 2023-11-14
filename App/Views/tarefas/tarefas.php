@@ -1,59 +1,139 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="task-form">
-                <h2 class="text-center mb-4">Adicionar Tarefa</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="taskName">Nome da Tarefa</label>
-                        <input type="text" class="form-control" id="taskName" placeholder="Digite o nome da tarefa" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="taskDescription">Descrição</label>
-                        <textarea class="form-control" id="taskDescription" rows="3" placeholder="Digite a descrição da tarefa"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="taskDate">Data de Conclusão</label>
-                        <input type="date" class="form-control" id="taskDate" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Adicionar Tarefa</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="task-list">
-                <h2 class="text-center mb-4">Lista de Tarefas</h2>
-                <div class="task-item">
-                    <h4>Nome da Tarefa 1</h4>
-                    <p>Descrição da Tarefa 1</p>
-                    <p>Data de Conclusão: 2023-01-01</p>
-                </div>
-                <div class="task-item">
-                    <h4>Nome da Tarefa 2</h4>
-                    <p>Descrição da Tarefa 2</p>
-                    <p>Data de Conclusão: 2023-01-02</p>
-                </div>
-                <!-- Adicione mais tarefas conforme necessário -->
-            </div>
-        </div>
-    </div>
-</div>
-
 <style>
+    /* body {
+      background-color: #f8f9fa;
+    } */
     .container {
-        margin-top: 50px;
+      max-width: 1200px;
+    }
+    .calendar-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .calendar-header {
+      background-color: #4285f4;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 2px solid #fff;
+      display: flex;
+      justify-content: space-between;
+    }
+    .calendar-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      height: 500px;
+    }
+    .day {
+      padding: 15px;
+      text-align: center;
+      border-right: 1px solid #e9ecef;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .day:hover {
+      background-color: #f1f8ff;
+    }
+  </style>
+
+
+  <div class="container col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <div>
+          <button onclick="previous()" class="btn btn-danger">Anterior</button>
+          <span id="currentMonthYear">Novembro 2023</span>
+          <button onclick="next()" class="btn btn-danger">Próximo</button>
+        </div>
+      </div>
+      <div class="calendar-body" id="calendarDays">
+        <!-- Dias serão adicionados dinamicamente aqui -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    const currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+    
+    const monthNames = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    function updateCalendar() {
+      const currentMonthYearElement = document.getElementById('currentMonthYear');
+      const calendarDaysElement = document.getElementById('calendarDays');
+
+      currentMonthYearElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+      
+      // Limpar os dias existentes
+      calendarDaysElement.innerHTML = '';
+
+      // Obter o primeiro dia do mês
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+      // Obter o último dia do mês
+      const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      // Adicionar os dias do mês
+      for (let i = 0; i < firstDay; i++) {
+        // Adicionar células vazias para preencher o início do mês
+        const emptyDay = document.createElement('div');
+        emptyDay.classList.add('day', 'text-muted');
+       
+        calendarDaysElement.appendChild(emptyDay);
+      }
+
+      for (let i = 1; i <= lastDay; i++) {
+        // Adicionar os dias do mês
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day');
+        dayElement.id = i;
+        dayElement.textContent = i;
+
+        // Adicionar evento de clique para chamar a função abrirModal
+        dayElement.addEventListener('click', function() {
+            abrirTarefas(i, currentMonth, currentYear);
+        });
+        
+        calendarDaysElement.appendChild(dayElement);
+
+      }
+      
     }
 
-    .task-form,
-    .task-list {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
+    // 
+
+    function previous() {
+      if (currentMonth === 0) {
+        currentMonth = 11;
+        currentYear--;
+      } else {
+        currentMonth--;
+      }
+      updateCalendar();
     }
 
-    .task-item {
-        margin-bottom: 10px;
+    function next() {
+      if (currentMonth === 11) {
+        currentMonth = 0;
+        currentYear++;
+      } else {
+        currentMonth++;
+      }
+      updateCalendar();
     }
-</style>
+
+    
+
+
+    function abrirTarefas(dia, mes, ano){
+        alert(dia, mes, ano);
+    }
+
+    updateCalendar(); // Atualizar o calendário inicial
+   
+  </script>

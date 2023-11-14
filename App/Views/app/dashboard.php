@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Midias</h5>
@@ -26,12 +26,12 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Diversos</h5>
                     <p class="card-text">Conteudo Diverso</p>
-                    <a href="pagina1.html" class="btn btn-primary">Acessar</a>
+                    <a href="" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
         </div>
