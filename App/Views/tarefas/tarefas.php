@@ -229,7 +229,7 @@
             <div class="modal-footer">
                 <!-- Botão de fechar no rodapé do modal -->
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
             </div>
         </div>
     </div>
