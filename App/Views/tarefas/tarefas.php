@@ -72,7 +72,7 @@
         const calendarDaysElement = document.getElementById('calendarDays');
 
         currentMonthYearElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-        
+
         // Limpar os dias existentes
         calendarDaysElement.innerHTML = '';
 
@@ -132,7 +132,7 @@
     }
 
     function mesLetras(mesExtenso) {
-        
+
         const meses = {
             'janeiro': 1,
             'fevereiro': 2,
@@ -150,7 +150,7 @@
 
         var mes = mesExtenso.toLowerCase();
         // console.log(mes);
-        
+
         // verifico se existe chave que inclua o mes que recebi como parametro
         if (Object.keys(meses).includes(mes)) {
             return meses[mes];
@@ -168,43 +168,65 @@
         var anoMes = anoMes.textContent;
         var mesExtenso = anoMes.split(" ")[0];
         var ano = anoMes.split(" ")[1];
-        
-        if(dia < 10){
-            dia = "0"+dia
+        const dataAtual = new Date();
+        var mesAtual = dataAtual.getMonth() + 1; // Adicionamos 1 porque os meses começam em 0
+
+        // Obter o dia do mês atual
+        var diaAtual = dataAtual.getDate();
+        //console.log(diaAtual);
+
+        if (dia < 10) {
+            dia = "0" + dia
         }
 
         var mesNumerico = mesLetras(mesExtenso);
 
         // console.log(dia + '/' + mesNumerico + "/" + ano)
-        console.log(ano+mesNumerico+dia)
-        $("#exampleModal").modal("show");
+        console.log(ano + mesNumerico + dia)
+        $("#data").val(dia + "/" + mesNumerico + "/" + ano);
+
+        // checagem para não exibir modal de cadastro caso 
+        // a data selecionada seja menor do que o dia atual
+        if(dia>=diaAtual){
+            $("#exampleModal").modal("show");
+        }
+        
     }
 
     updateCalendar(); // Atualizar o calendário inicial
-    
 </script>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Título do Modal</h5>
-        <!-- Botão de fechar no cabeçalho do modal -->
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">X</button>
-      </div>
-      <div class="modal-body">
-        <!-- Conteúdo do modal -->
-        <p>Conteúdo do modal vai aqui...</p>
-      </div>
-      <div class="modal-footer">
-        <!-- Botão de fechar no rodapé do modal -->
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Tarefa</h5>
+                <!-- Botão de fechar no cabeçalho do modal -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data:</label>
+                        <input type="text" class="form-control" id="data" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc" class="form-label">Descrição da tarefa:</label>
+                        <input type="text" class="form-control" id="desc" placeholder="">
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="mensagem" class="form-label">Mensagem:</label>
+                        <textarea class="form-control" id="mensagem" rows="3" placeholder="Digite sua mensagem"></textarea>
+                    </div> -->
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <!-- Botão de fechar no rodapé do modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-<!-- Adicione o Bootstrap JS (bundle inclui Popper.js) e jQuery -->
-
