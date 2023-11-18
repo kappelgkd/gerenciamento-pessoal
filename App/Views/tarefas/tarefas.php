@@ -168,12 +168,15 @@
         var anoMes = anoMes.textContent;
         var mesExtenso = anoMes.split(" ")[0];
         var ano = anoMes.split(" ")[1];
+        
         const dataAtual = new Date();
-        var mesAtual = dataAtual.getMonth() + 1; // Adicionamos 1 porque os meses começam em 0
-
+        const mesAtual = dataAtual.getMonth() + 1; // Adicionamos 1 porque os meses começam em 0
+        const anoAtual = dataAtual.getFullYear();
         // Obter o dia do mês atual
-        var diaAtual = dataAtual.getDate();
-        //console.log(diaAtual);
+        const diaAtual = dataAtual.getDate();
+        
+        console.log(anoAtual+"-"+mesAtual+"-"+diaAtual);
+        var dataPresente = anoAtual+"-"+mesAtual+"-"+diaAtual;
 
         if (dia < 10) {
             dia = "0" + dia
@@ -183,11 +186,12 @@
 
         // console.log(dia + '/' + mesNumerico + "/" + ano)
         console.log(ano + mesNumerico + dia)
+        var diaTarefa = ano+"-"+mesNumerico+"-"+dia
         $("#data").val(dia + "/" + mesNumerico + "/" + ano);
 
-        // checagem para não exibir modal de cadastro caso 
-        // a data selecionada seja menor do que o dia atual
-        if(dia>=diaAtual){
+
+        // checagem de data para não permitir cadastrar tarefa em dias passados;
+        if(diaTarefa>=dataPresente){ 
             $("#exampleModal").modal("show");
         }
         
