@@ -72,7 +72,7 @@
         const calendarDaysElement = document.getElementById('calendarDays');
 
         currentMonthYearElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-        //console.log(currentMonthYearElement.textContent);
+        
         // Limpar os dias existentes
         calendarDaysElement.innerHTML = '';
 
@@ -98,7 +98,7 @@
             dayElement.id = i;
             dayElement.textContent = i;
 
-            // Adicionar evento de clique para chamar a função abrirModal
+            // Adicionar evento de clique para chamar a função abrirTarefas
             dayElement.addEventListener('click', function() {
                 abrirTarefas(i, currentMonthYearElement.textContent);
             });
@@ -177,8 +177,34 @@
 
         // console.log(dia + '/' + mesNumerico + "/" + ano)
         console.log(ano+mesNumerico+dia)
+        $("#exampleModal").modal("show");
     }
 
     updateCalendar(); // Atualizar o calendário inicial
     
 </script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Título do Modal</h5>
+        <!-- Botão de fechar no cabeçalho do modal -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+      </div>
+      <div class="modal-body">
+        <!-- Conteúdo do modal -->
+        <p>Conteúdo do modal vai aqui...</p>
+      </div>
+      <div class="modal-footer">
+        <!-- Botão de fechar no rodapé do modal -->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Adicione o Bootstrap JS (bundle inclui Popper.js) e jQuery -->
+
