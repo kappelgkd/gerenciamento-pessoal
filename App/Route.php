@@ -90,6 +90,13 @@ class Route extends Bootstrap {
 			'action' => 'tarefas'
 		);
 
+		$routes['cadastrar-tarefa'] = array(
+			'route' => '/cadastrar-tarefa',
+			'controller' => 'TarefasController',
+			'action' => 'cadastrarTarefa'
+		);
+
+
 		$routes['midias'] = array(
 			'route' => '/midias',
 			'controller' => 'MidiasController',

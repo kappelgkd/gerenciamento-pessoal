@@ -57,7 +57,48 @@
     </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Tarefa</h5>
+                <!-- Botão de fechar no cabeçalho do modal -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">X</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data:</label>
+                        <input type="text" class="form-control" id="data" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc" class="form-label">Descrição da tarefa:</label>
+                        <textarea class="form-control" id="desc" placeholder="" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dtFinalizacao" class="form-label">Data de Finalização:</label>
+                        <input type="text" class="form-control" id="dtFinalizacao" placeholder=""></input>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <!-- Botão de fechar no rodapé do modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" id="btnSalvarTarefas" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $("#dtFinalizacao").mask("00/00/0000");
+    });
+
     const currentDate = new Date();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
@@ -168,15 +209,15 @@
         var anoMes = anoMes.textContent;
         var mesExtenso = anoMes.split(" ")[0];
         var ano = anoMes.split(" ")[1];
-        
+
         const dataAtual = new Date();
         const mesAtual = dataAtual.getMonth() + 1; // Adicionamos 1 porque os meses começam em 0
         const anoAtual = dataAtual.getFullYear();
         // Obter o dia do mês atual
         const diaAtual = dataAtual.getDate();
-        
-        console.log(anoAtual+"-"+mesAtual+"-"+diaAtual);
-        var dataPresente = anoAtual+"-"+mesAtual+"-"+diaAtual;
+
+        //console.log(anoAtual+"-"+mesAtual+"-"+diaAtual);
+        var dataPresente = anoAtual + "-" + mesAtual + "-" + diaAtual;
 
         if (dia < 10) {
             dia = "0" + dia
@@ -185,52 +226,86 @@
         var mesNumerico = mesLetras(mesExtenso);
 
         // console.log(dia + '/' + mesNumerico + "/" + ano)
-        console.log(ano + mesNumerico + dia)
-        var diaTarefa = ano+"-"+mesNumerico+"-"+dia
+        //console.log(ano + mesNumerico + dia)
+        var diaTarefa = ano + "-" + mesNumerico + "-" + dia
         $("#data").val(dia + "/" + mesNumerico + "/" + ano);
 
 
         // checagem de data para não permitir cadastrar tarefa em dias passados;
-        if(diaTarefa>=dataPresente){ 
+        // if (diaTarefa >= dataPresente) {
+        //     $("#exampleModal").modal("show");
+        // }
+        if (verificaData(diaTarefa) == true) {
             $("#exampleModal").modal("show");
         }
-        
+    }
+
+    function verificaData(diaFuturo) {
+        /*
+            FUNÇAO PARA VERIFICAR SE DATA SELECIONADA É MAIOR OU IGUAL AO DIA ATUAL
+        */
+        const dataAtual = new Date();
+        const mesAtual = dataAtual.getMonth() + 1; // Adicionamos 1 porque os meses começam em 0
+        const anoAtual = dataAtual.getFullYear();
+        // Obter o dia do mês atual
+        const diaAtual = dataAtual.getDate();
+
+        //console.log(anoAtual+"-"+mesAtual+"-"+diaAtual);
+        var dataPresente = anoAtual + "-" + mesAtual + "-" + diaAtual;
+        console.log(dataPresente+"^"+diaFuturo);
+        if (diaFuturo >= dataPresente) {
+            return true
+        }
+
     }
 
     updateCalendar(); // Atualizar o calendário inicial
+
+    const btnTarefas = $("#btnSalvarTarefas");
+
+    
+
+    btnTarefas.on('click', function() {
+        // console.log(1);
+        // checagem se data de finalizacao é maior ou igual ao dia atual.
+        var diaTarefaCadastrada = $("#data").val();
+        var diaTarefaCadastrada = diaTarefaCadastrada.split("/")[2]+"-"+diaTarefaCadastrada.split("/")[1]+"-"+diaTarefaCadastrada.split("/")[0]
+
+        var diaFinalizarTarefa = $("#dtFinalizacao").val();
+        var tarefa = $("#desc").val();
+        
+        var dia = diaFinalizarTarefa.split("/")[0];
+        var mes = diaFinalizarTarefa.split("/")[1];
+        var ano = diaFinalizarTarefa.split("/")[2];
+        var diaFinalizarTarefa = ano+"-"+mes+"-"+dia
+        // console.log(diaFinalizarTarefa);
+
+        if (verificaData(diaFinalizarTarefa) == true) {
+            //console.log(2);
+            // criando o objeto que vai ser enviado para api
+            var dados = {
+                tarefa: tarefa,
+                diaTarefaCadastrada: diaTarefaCadastrada, 
+                diaFinalizarTarefa: diaFinalizarTarefa
+            };
+            $.ajax({
+                type: "POST",
+                url: "/cadastrar-tarefa",
+                data: dados,
+                
+                success: function(response) {
+
+
+                },
+                error: function() {
+                    // em caso de erro
+                    alert("100 - Tente novamente mais tarde.");
+                }
+            });
+        }
+        else{
+           alert('Não é possível registrar tarefas para dias no passado.');
+        }
+
+    });
 </script>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Tarefa</h5>
-                <!-- Botão de fechar no cabeçalho do modal -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar">X</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="data" class="form-label">Data:</label>
-                        <input type="text" class="form-control" id="data" placeholder="">
-                    </div>
-                    <div class="mb-3">
-                        <label for="desc" class="form-label">Descrição da tarefa:</label>
-                        <input type="text" class="form-control" id="desc" placeholder="">
-                    </div>
-                    <!-- <div class="mb-3">
-                        <label for="mensagem" class="form-label">Mensagem:</label>
-                        <textarea class="form-control" id="mensagem" rows="3" placeholder="Digite sua mensagem"></textarea>
-                    </div> -->
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <!-- Botão de fechar no rodapé do modal -->
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
-            </div>
-        </div>
-    </div>
-</div>

@@ -20,6 +20,13 @@ class TarefasController extends Action{
             header('Location: /', '', 302);
         }
     }
+
+    public function cadastrarTarefa(){
+        session_start();
+        echo '<pre>';
+        print_r($_POST);
+        
+    }
    
 }
 
