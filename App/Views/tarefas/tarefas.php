@@ -252,7 +252,7 @@
 
         //console.log(anoAtual+"-"+mesAtual+"-"+diaAtual);
         var dataPresente = anoAtual + "-" + mesAtual + "-" + diaAtual;
-        console.log(dataPresente+"^"+diaFuturo);
+        //console.log(dataPresente+"^"+diaFuturo);
         if (diaFuturo >= dataPresente) {
             return true
         }
@@ -263,23 +263,19 @@
 
     const btnTarefas = $("#btnSalvarTarefas");
 
-    
-
     btnTarefas.on('click', function() {
         // console.log(1);
+        var tarefa = $("#desc").val();
         // checagem se data de finalizacao é maior ou igual ao dia atual.
         var diaTarefaCadastrada = $("#data").val();
         var diaTarefaCadastrada = diaTarefaCadastrada.split("/")[2]+"-"+diaTarefaCadastrada.split("/")[1]+"-"+diaTarefaCadastrada.split("/")[0]
 
         var diaFinalizarTarefa = $("#dtFinalizacao").val();
-        var tarefa = $("#desc").val();
-        
         var dia = diaFinalizarTarefa.split("/")[0];
         var mes = diaFinalizarTarefa.split("/")[1];
         var ano = diaFinalizarTarefa.split("/")[2];
         var diaFinalizarTarefa = ano+"-"+mes+"-"+dia
-        // console.log(diaFinalizarTarefa);
-
+        
         if (verificaData(diaFinalizarTarefa) == true) {
             //console.log(2);
             // criando o objeto que vai ser enviado para api
@@ -292,7 +288,6 @@
                 type: "POST",
                 url: "/cadastrar-tarefa",
                 data: dados,
-                
                 success: function(response) {
 
 

@@ -8,7 +8,7 @@ use MF\Model\Container;
 class TarefasController extends Action{
 
     public function tarefas(){
-       
+        // metodo principal que vai renderizar a view.
         session_start();
         if(isset($_SESSION['id']) && isset($_SESSION['nome'])){
             //o usuario esta autenticado e poderá acessar os recursos. 
@@ -23,6 +23,7 @@ class TarefasController extends Action{
 
     public function cadastrarTarefa(){
         session_start();
+        
         echo '<pre>';
         print_r($_POST);
         
