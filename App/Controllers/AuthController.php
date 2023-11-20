@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use MF\Controller\Action;
 use MF\Model\Container;
+use \Firebase\JWT\JWT;
 
 class AuthController extends Action{
 
@@ -11,15 +12,26 @@ class AuthController extends Action{
         // echo 'aqui';
         
         $usuario = Container::getModel('Usuario');
+        $key = "1234";
 
         $usuario->__set('login', $_POST['login']);
         $usuario->__set('senha', $_POST['senha']);
-        $token = bin2hex(random_bytes(32));
         $retorno = array();
         $usuario->autenticar();
         
+        $issuedAt = time();
+        $expirationTime = $issuedAt + 3600;  // Token válido por 1 hora
+
         // validando se as informações foram preenchidas para validar a autenticacao e realizar o direcionamento.
         if($usuario->__get('id') != '' && $usuario->__get('nome') != ''){
+            
+            $payload = array(
+                'user_id' => $usuario->__get('id'),
+                'iat' => $issuedAt,
+                'exp' => $expirationTime
+            );
+
+            $token = JWT::encode($payload, $key, 'HS256');
            
             // iniciando e atribuindo sessoes. Desta forma, sempre que for utilizar sessao, deverá inicia-la.
             session_start();
