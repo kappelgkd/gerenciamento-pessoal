@@ -12,31 +12,24 @@ class AuthController extends Action{
         // echo 'aqui';
         
         $usuario = Container::getModel('Usuario');
-        $key = "1234";
+        
 
         $usuario->__set('login', $_POST['login']);
         $usuario->__set('senha', $_POST['senha']);
-        $retorno = array();
         $usuario->autenticar();
-        
-        $issuedAt = time();
-        $expirationTime = $issuedAt + 3600;  // Token válido por 1 hora
+        $retorno = array();
 
         // validando se as informações foram preenchidas para validar a autenticacao e realizar o direcionamento.
         if($usuario->__get('id') != '' && $usuario->__get('nome') != ''){
             
-            $payload = array(
-                'user_id' => $usuario->__get('id'),
-                'iat' => $issuedAt,
-                'exp' => $expirationTime
-            );
-
-            $token = JWT::encode($payload, $key, 'HS256');
-           
+            
             // iniciando e atribuindo sessoes. Desta forma, sempre que for utilizar sessao, deverá inicia-la.
             session_start();
             $_SESSION['id'] = $usuario->__get('id');
             $_SESSION['nome'] = $usuario->__get('nome');
+            
+            $token = $this->gerarTokenAutenticacao($_SESSION['id']);
+            
             $retorno=array(
                 "status" => "200",
                 "redirecionar"=>"dashboard",
@@ -44,6 +37,7 @@ class AuthController extends Action{
                 "token"=>$token
 
             );
+
             //header('Location: /dashboard', '200');
         }
         else{
@@ -55,6 +49,25 @@ class AuthController extends Action{
         }
         
         echo json_encode($retorno,true);
+    }
+
+    // metodo privado pois a principio só deve ser chamado dentro da classe 
+    private function gerarTokenAutenticacao($idUsuario){
+        
+        $issuedAt = time();
+        $expirationTime = $issuedAt + 3600;  // Token válido por 1 hora
+        $key = "1234";
+
+        $payload = array(
+            'user_id' => $idUsuario,
+            'iat' => $issuedAt,
+            'exp' => $expirationTime
+        );
+
+        // gerando token de autenticacao. obs.: criar um metodo para fazer essa operacao
+        $token = JWT::encode($payload, $key, 'HS256');
+        return $token;
+
     }
     
 }
