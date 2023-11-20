@@ -5,8 +5,11 @@ namespace App\Controllers;
 use MF\Controller\Action;
 use MF\Model\Container;
 use \Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Exception;
 
 class AuthController extends Action{
+    
 
     public function autenticar(){
         // echo 'aqui';
@@ -29,7 +32,7 @@ class AuthController extends Action{
             $_SESSION['nome'] = $usuario->__get('nome');
             
             $token = $this->gerarTokenAutenticacao($_SESSION['id']);
-            
+           
             $retorno=array(
                 "status" => "200",
                 "redirecionar"=>"dashboard",
@@ -53,10 +56,10 @@ class AuthController extends Action{
 
     // metodo privado pois a principio só deve ser chamado dentro da classe 
     private function gerarTokenAutenticacao($idUsuario){
-        
+        $key = "1234";
         $issuedAt = time();
         $expirationTime = $issuedAt + 3600;  // Token válido por 1 hora
-        $key = "1234";
+        //$key = "1234";
 
         $payload = array(
             'user_id' => $idUsuario,
@@ -66,8 +69,20 @@ class AuthController extends Action{
 
         // gerando token de autenticacao. obs.: criar um metodo para fazer essa operacao
         $token = JWT::encode($payload, $key, 'HS256');
+        // $decoded = JWT::decode($token, new Key($key, 'HS256'));
         return $token;
 
+    }
+
+    public function validarToken($token){
+        $key = "1234";
+        try{
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            return $decoded;
+        }
+        catch(Exception $e){
+
+        }
     }
     
 }

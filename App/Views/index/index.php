@@ -50,7 +50,7 @@
                 url: "/autenticar",
                 data: dados,
                 success: function(response) {
-                    //console.log(response);
+                    // console.log(response);
 
                     if (response.status = 200) {
                         //console.log("aqui");
