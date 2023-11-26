@@ -1,3 +1,4 @@
 /vendor/firebase/
 /vendor/composer/
 /vendor/autoload.php
+.env

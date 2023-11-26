@@ -12,13 +12,14 @@ class AuthController extends Action{
     
 
     public function autenticar(){
-        // echo 'aqui';
         
         $usuario = Container::getModel('Usuario');
+        $payload = json_decode(file_get_contents("php://input"));
+        // print_r($payload);
+        // exit;
         
-
-        $usuario->__set('login', $_POST['login']);
-        $usuario->__set('senha', $_POST['senha']);
+        $usuario->__set('login', $payload->usuario);
+        $usuario->__set('senha', $payload->senha);
         $usuario->autenticar();
         $retorno = array();
 

@@ -42,18 +42,18 @@
 
         if (login != "" && senha != "") {
             var dados = {
-                login: login,
+                usuario: login,
                 senha: senha
             };
             $.ajax({
                 type: "POST",
                 url: "/autenticar",
-                data: dados,
-                success: function(response) {
-                    // console.log(response);
+                data: JSON.stringify(dados),
 
+                success: function(response) {
+                    console.log(response);
                     if (response.status = 200) {
-                        //console.log("aqui");
+                        console.log("aqui");
                         window.location.href = "/dashboard"
                     }
                 },
