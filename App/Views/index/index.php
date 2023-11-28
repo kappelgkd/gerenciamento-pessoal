@@ -10,8 +10,8 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col=sm-1 offset-md-3 login-form">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 col=sm-10 login-form">
                 <h2 class="text-center">Login</h2>
                 <form method="POST" action="/autenticar">
                     <div class="form-group">
@@ -54,7 +54,7 @@
                     console.log(response);
                     if (response.status = 200) {
                         console.log("aqui");
-                        //window.location.href = "/dashboard"
+                        window.location.href = "/dashboard"
                     }
                 },
                 error: function() {
