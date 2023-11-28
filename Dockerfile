@@ -7,7 +7,7 @@ RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-di
 #RUN composer install
 
 # Instale as dependências, incluindo a biblioteca firebase/php-jwt (que suporta JWT)
-RUN composer install --no-scripts --no-autoloader
+RUN composer install
 
 # Execute o carregamento automático do Composer
 RUN composer dump-autoload --optimize
