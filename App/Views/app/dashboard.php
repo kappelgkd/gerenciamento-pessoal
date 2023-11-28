@@ -55,7 +55,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
-    .boxMenu {
+   
+    .boxMenu2 {
         height: 56%;
         /* background-color: #fff; */
         border-radius: 8px;
@@ -63,7 +64,7 @@
         padding: 20px;
         /* box-shadow: 10px 15px 25px; */
     }
-
+    */
     .card {
         /* background-color: #6c63ff; */
         border: none;
