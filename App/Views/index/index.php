@@ -54,7 +54,7 @@
                     console.log(response);
                     if (response.status = 200) {
                         console.log("aqui");
-                        //window.location.href = "/dashboard"
+                        window.location.href = "/dashboard"
                     }
                 },
                 error: function() {
