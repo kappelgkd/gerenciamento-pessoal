@@ -1,9 +1,7 @@
-<div style="margin-top:8px;">
-    <center>
-        <h1 class="tituloDashboard">DASHBOARD</h1>
-    </center>
-</div>
 <div class="container boxMenu">
+    <div>
+        <center><h1>DASHBOARD</h1></center>
+    </div>
     <div class="row">
 
         <div class="col-12 col-sm-6 col-md-6 col-lg-6">
@@ -54,6 +52,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 <style>
    
     .boxMenu2 {
