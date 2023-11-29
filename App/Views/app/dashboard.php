@@ -1,12 +1,11 @@
-<div style="margin-top:8px;">
-    <center>
-        <h1 class="tituloDashboard">DASHBOARD</h1>
-    </center>
-</div>
 <div class="container boxMenu">
+    <div>
+        <center><h1>DASHBOARD</h1></center>
+    </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6"">
-            <div class="card">
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Textos</h5>
                     <p class="card-text">Biblioteca de textos.</p>
@@ -15,29 +14,29 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="card">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Midias</h5>
-                    <p class="card-text">Biblioteca de livros e midias.</p>
+                    <h5 class="card-title">Mídias</h5>
+                    <p class="card-text">Biblioteca de livros e mídias.</p>
                     <a href="/biblioteca" class="btn btn-primary">Livros</a>
-                    <a href="/midias" class="btn btn-primary">Midias</a>
+                    <a href="/midias" class="btn btn-primary">Mídias</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="card">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Diversos</h5>
-                    <p class="card-text">Conteudo Diverso</p>
+                    <p class="card-text">Conteúdo Diverso</p>
                     <a href="" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="card">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">Tarefas</h5>
                     <p class="card-text">Tarefas Cadastradas</p>
@@ -47,11 +46,17 @@
         </div>
 
     </div>
-
 </div>
 
+<!-- Adicione os scripts do Bootstrap (jQuery e Popper.js) e o Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 <style>
-    .boxMenu {
+   
+    .boxMenu2 {
         height: 56%;
         /* background-color: #fff; */
         border-radius: 8px;
@@ -59,7 +64,7 @@
         padding: 20px;
         /* box-shadow: 10px 15px 25px; */
     }
-
+    */
     .card {
         /* background-color: #6c63ff; */
         border: none;
