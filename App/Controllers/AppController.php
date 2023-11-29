@@ -46,11 +46,11 @@ class AppController extends Action{
     public function cadastrarTexto(){
         
         $texto = Container::getModel('Blog');
-        $texto->__set('titulo', $_POST['titulo']);
-        $texto->__set('texto', $_POST['texto']);
+        //$texto->cadastrarTexto($_POST['titulo'], $_POST['texto']);
+        //$texto->__set('texto', $_POST['texto']);
         
         //$texto->cadastrarTexto();
-        echo json_encode(($texto->cadastrarTexto()), true);
+        echo json_encode(($texto->cadastrarTexto($_POST['texto'], $_POST['titulo'])), true);
         // exit;
     }
 
@@ -58,7 +58,7 @@ class AppController extends Action{
         session_start();
         // print_r($_SESSION);
         $textoCadastrados = Container::getModel('Blog');
-        $textoCadastrados->__set('id', $_SESSION['id']);
+        //$textoCadastrados->__set('id', $_SESSION['id']);
         
         $textoCadastrados->listarTexto();
         

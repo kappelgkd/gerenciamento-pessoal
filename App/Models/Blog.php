@@ -32,13 +32,13 @@ class Blog extends Model{
 
     // FUNÇÕES ESPECIFICAS DE CADA MODEL
 
-    public function cadastrarTexto(){
+    public function cadastrarTexto($texto, $titulo){
         session_start();
         $query = "insert into tb_textos_blog(texto, titulo, usuario, status) VALUES (:texto, :titulo, :usuario, :status)";
         $stmt = $this->db->prepare($query);
 
-        $stmt->bindValue('titulo', $this->__get('titulo'), \PDO::PARAM_STR);
-        $stmt->bindValue('texto', $this->__get('texto'), \PDO::PARAM_STR);
+        $stmt->bindValue('titulo', $titulo, \PDO::PARAM_STR);
+        $stmt->bindValue('texto', $texto, \PDO::PARAM_STR);
         $stmt->bindValue('usuario', $_SESSION['id'], \PDO::PARAM_STR);
         $stmt->bindValue('status', '1', \PDO::PARAM_STR);
         
@@ -64,10 +64,12 @@ class Blog extends Model{
 
     public function listarTexto(){
         
-        $query = "SELECT conteudo.texto, conteudo.titulo FROM tb_textos_blog as conteudo INNER JOIN tb_usuario as user ON conteudo.usuario = user.id";
+        $query = "SELECT conteudo.texto, conteudo.titulo FROM tb_textos_blog as conteudo 
+        INNER JOIN tb_usuario as user ON conteudo.usuario = user.id
+        WHERE conteudo.usuario = :usuario_id";
         $stmt = $this->db->prepare($query);;
-        $stmt->bindValue(':conteudo.usuario',$this->__get('id'), \PDO::PARAM_STR);
-       
+        $stmt->bindValue(':usuario_id', $_SESSION['id'], \PDO::PARAM_INT);
+    
         try {
             
             $stmt->execute();
