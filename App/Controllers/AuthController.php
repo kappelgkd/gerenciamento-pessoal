@@ -6,6 +6,7 @@ use MF\Controller\Action;
 use MF\Model\Container;
 use \Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use App\Controllers\UtilsController;
 use Exception;
 
 class AuthController extends Action{
@@ -33,13 +34,14 @@ class AuthController extends Action{
             $_SESSION['nome'] = $usuario->__get('nome');
             
             $token = $this->gerarTokenAutenticacao($_SESSION['id']);
-           
+            $utils = new UtilsController;
+            $protocolo = $utils->gerarProtocolo();
             $retorno=array(
                 "status" => "200",
                 "redirecionar"=>"dashboard",
                 "mensagem"=>"Login efetuado",
-                "token"=>$token
-
+                "token"=>$token,
+                "protocolo"=>$protocolo
             );
 
             //header('Location: /dashboard', '200');
@@ -52,7 +54,7 @@ class AuthController extends Action{
             );
         }
         
-        echo json_encode($retorno,true);
+        echo json_encode($retorno);
     }
 
     // metodo privado pois a principio só deve ser chamado dentro da classe 

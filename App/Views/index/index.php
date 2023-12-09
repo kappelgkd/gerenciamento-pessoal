@@ -45,6 +45,7 @@
                 usuario: login,
                 senha: senha
             };
+            console.log(dados);
             $.ajax({
                 type: "POST",
                 url: "/autenticar",

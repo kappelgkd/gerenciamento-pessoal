@@ -103,6 +103,13 @@ class Route extends Bootstrap {
 			'action' => 'midias'
 		);
 
+		
+		$routes['verificar'] = array(
+			'route' => '/verificar',
+			'controller' => 'VerificacaoController',
+			'action' => 'enviarNotificacaoTelegram'
+		);
+
 		$this->setRoutes($routes);
 	}
 

@@ -1,7 +1,10 @@
 {
 	"require": {
 		"php": ">= 7.0",
-		"firebase/php-jwt": "^6.9"
+		"firebase/php-jwt": "^6.9",
+		"monolog/monolog": "^3.5",
+		"swiftmailer/swiftmailer": "^6.3",
+		"guzzlehttp/guzzle": "^7.8"
 	},
 	"authors": [
 		{

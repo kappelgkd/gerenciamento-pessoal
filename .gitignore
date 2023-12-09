@@ -1,4 +1,5 @@
-/vendor/firebase/
-/vendor/composer/
-/vendor/autoload.php
+/vendor/*
+/vendor/*.php
+/vendor/composer
+log.txt
 .env
