@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 require '../vendor/autoload.php';
+
+use Exception;
 use MF\Controller\Action;
 use MF\Model\Container;
 use Monolog\Logger;
@@ -20,7 +22,7 @@ class VerificacaoController extends Action{
     }
 
     public function enviarNotificacaoErroTelegram(){
-        
+        // esse metodo eu utilizo a lib monolog para enviar mensagem
         $localHost = "localhost:2000";
         $httpHost = $_SERVER['HTTP_HOST'];
         
@@ -45,9 +47,19 @@ class VerificacaoController extends Action{
 
     }
 
-    public function enviarMensagemTelegram(array $conteudo){
+    public function configurarMensagemTelegram(array $conteudo){
         
-        print_r($conteudo);
+        //print_r($conteudo);
+        try{
+            $conteudo = $conteudo['conteudo']['content'];
+            $author = $conteudo['conteudo']['author'];
+        }
+        catch(Exception $e){
+
+        }
+        
+
+
     }
 
     public function salvarLogAcesso(){

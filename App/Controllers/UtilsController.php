@@ -92,11 +92,11 @@ class UtilsController extends Action
             $mensageiro = new VerificacaoController;
             $dados['status'] = 200;
             $dados['conteudo'] = array(
-                "conteudo"=> $content,
-                "autor"=>$author
+                "content"=> $content,
+                "author"=>$author
             );
 
-            $mensageiro->enviarMensagemTelegram($dados);
+            //$mensageiro->enviarMensagemTelegram($dados);
         
         }
         
