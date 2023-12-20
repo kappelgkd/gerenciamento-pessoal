@@ -110,6 +110,18 @@ class Route extends Bootstrap {
 			'action' => 'enviarNotificacaoTelegram'
 		);
 
+		$routes['busca-pokemon'] = array(
+			'route' => '/busca-pokemon',
+			'controller' => 'UtilsController',
+			'action' => 'pokemonShort'
+		);
+
+		$routes['random-quote'] = array(
+			'route' => '/random-quote',
+			'controller' => 'UtilsController',
+			'action' => 'quoteRandom'
+		);
+
 		$this->setRoutes($routes);
 	}
 

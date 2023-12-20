@@ -7,12 +7,19 @@ use Monolog\Logger;
 use Monolog\Handler\TelegramBotHandler;
 use MnoLog\Handler\StreamHandler;
 use Monolog\Handler\StreamHandler as HandlerStreamHandler;
-use Swift_SmtpTransport;
-use Swift_Mailer;
 
 class VerificacaoController extends Action{
     
-    public function enviarNotificacaoTelegram(){
+    public $mensagem;
+
+    public function getMensagemLog(){
+        return $this->mensagem;
+    }
+    public function setMensagemLog($mensagem){
+        $this->mensagem = $mensagem;
+    }
+
+    public function enviarNotificacaoErroTelegram(){
         
         $localHost = "localhost:2000";
         $httpHost = $_SERVER['HTTP_HOST'];
@@ -36,10 +43,22 @@ class VerificacaoController extends Action{
         $log->pushHandler($botTelegram);
         $log->error('Isso é um erro! Uma notificação será enviada para o bot do Telegram.');
 
+    }
 
+    public function enviarMensagemTelegram(array $conteudo){
+        
+        print_r($conteudo);
     }
 
     public function salvarLogAcesso(){
+
+    }
+
+    public function salvarLogErro(){
+
+    }
+
+    public function salvarLogConexaoBD(){
 
     }
    
