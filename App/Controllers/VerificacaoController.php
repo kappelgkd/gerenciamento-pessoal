@@ -27,8 +27,7 @@ class VerificacaoController extends Action{
         $httpHost = $_SERVER['HTTP_HOST'];
         
         if($localHost != $httpHost){
-            echo 'local';
-            exit;
+            return;
         }
         
         $log = new Logger("log_app");
@@ -51,14 +50,45 @@ class VerificacaoController extends Action{
         
         //print_r($conteudo);
         try{
-            $conteudo = $conteudo['conteudo']['content'];
-            $author = $conteudo['conteudo']['author'];
+           
+            if($conteudo['status'] != 200){
+                throw new Exception('Sem conteúdo', 204);
+            }
+            
+            $mensagem = $conteudo['conteudo']['mensagem'];
+
+            VerificacaoController::enviarMensagemTelegram($mensagem);
         }
         catch(Exception $e){
 
         }
         
+    }
 
+    public function enviarMensagemTelegram($mensagem){
+        $tokenBot = $_ENV['TELEGRAM_TOKEN'];
+        $tokenID = $_ENV['TELEGRAM_CHAT_ID'];
+        
+        $apiUrl = "https://api.telegram.org/bot{$tokenBot}/sendMessage";
+
+        $params = [
+            'chat_id' => $tokenID,
+            'text' => $mensagem,
+            'parse_mode' => 'HTML',
+        ];
+
+        // Inicializa a sessão cURL
+        $ch = curl_init($apiUrl);
+        // Configura as opções do cURL
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        
+        curl_close($ch);
+        return true;
+        //echo $response;
 
     }
 

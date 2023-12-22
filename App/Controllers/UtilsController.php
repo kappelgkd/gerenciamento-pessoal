@@ -93,11 +93,17 @@ class UtilsController extends Action
             $dados['status'] = 200;
             $dados['conteudo'] = array(
                 "content"=> $content,
-                "author"=>$author
+                "author"=>$author,
+                "mensagem"=> "<pre>".$content.'-'.$author."</pre>"
             );
+            
+            $mensageiro->configurarMensagemTelegram($dados);
+            $gravaRetorno = Container::getModel("Utils");
+            $gravaRetorno->setInfo($dados);
 
-            //$mensageiro->enviarMensagemTelegram($dados);
-        
+            // vou checar se o retorno abaixo tem erro e caso exista, vou salvar um arquivo e enviar uma notificacao. Vou usar bots separados. Um para aviso de erro e log e outro para recebimento de mensagens e utilidades.
+            $gravaRetorno->salveBD($gravaRetorno->getInfo());
+            
         }
         
         
